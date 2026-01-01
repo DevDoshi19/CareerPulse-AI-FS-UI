@@ -48,7 +48,6 @@ class ChatInputValidation(BaseModel):
     achievements: List[str] = Field(..., description="List of formatted achievements.")
 
 
-
 def generate_resume_data(name, summary, skills, projects, exp, edu, other, awards, job_desc):
     api_key = get_random_gemini_key()
 
@@ -112,7 +111,7 @@ def generate_resume_data(name, summary, skills, projects, exp, edu, other, award
     )
 
     chain = prompt | Structured_model
-
+    
     return chain.invoke({
         "profile_name": name,
         "summary": summary,
