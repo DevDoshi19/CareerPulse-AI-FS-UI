@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════
+   FINPAY-INSPIRED DESIGN TOKENS
+   Deep teal / white / elegant green
+   ═══════════════════════════════════════════════════ */
+@theme {
+  /* Primary — Deep teal spectrum */
+  --color-teal-950: #061B27;
+  --color-teal-900: #0B2838;
+  --color-teal-800: #0F3A4F;
+  --color-teal-700: #155E75;
+  --color-teal-600: #0E7490;
+  --color-teal-500: #06B6D4;
+  --color-teal-400: #22D3EE;
+  --color-teal-300: #67E8F9;
+
+  /* Neutrals */
+  --color-slate-900: #0F172A;
+  --color-slate-800: #1E293B;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748B;
+  --color-slate-400: #94A3B8;
+  --color-slate-300: #CBD5E1;
+  --color-slate-200: #E2E8F0;
+  --color-slate-100: #F1F5F9;
+  --color-slate-50: #F8FAFC;
+
+  /* Accent green */
+  --color-accent: #0D9488;
+  --color-accent-hover: #0F766E;
+  --color-accent-light: #CCFBF1;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-success-soft: #DCFCE7;
+  --color-error: #EF4444;
+  --color-error-soft: #FEE2E2;
+  --color-warning: #F59E0B;
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base ──────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply antialiased text-slate-900 bg-white transition-colors duration-300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Deep Navy Dark Theme Enforced */
+.dark body {
+  @apply bg-[#0F172A] text-[#CBD5E1];
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  @apply text-white;
+}
+
+.dark label {
+  @apply text-[#94A3B8];
+}
+
+input, textarea, select {
+  @apply bg-white border-slate-200 text-slate-900 focus:border-teal-900 focus:ring-1 focus:ring-teal-900 outline-none transition-all;
+}
+
+/* Global Soft Inputs & Focus Rings */
+.dark input, .dark textarea, .dark select {
+  @apply bg-[#020617] border-[#334155] text-white focus:border-[#22C55E] focus:ring-1 focus:ring-[#22C55E] transition-all duration-200 placeholder:text-[#94A3B8];
+}
+
+/* Micro-interactions */
+.btn-hover {
+  @apply hover:scale-[1.02] transition-transform duration-200;
+}
+
+.card-hover {
+  @apply hover:-translate-y-[2px] transition-transform duration-200;
+}
+
+/* Text Slide Hover Effect */
+.hover-slide-container {
+  @apply cursor-pointer transition-colors duration-300;
+}
+.hover-slide-container:hover {
+  @apply bg-slate-100 dark:bg-[#1E293B];
+}
+.hover-slide-text {
+  @apply inline-block transition-transform duration-[250ms] ease-in-out;
+}
+.hover-slide-container:hover .hover-slide-text {
+  @apply translate-x-[15px] text-black dark:text-white;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Custom scrollbar ──────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-300);
+  border-radius: 10px;
+}
+
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-teal-900);
+}
