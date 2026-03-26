@@ -115,6 +115,28 @@ export async function chatWithAIStream({ query, chatHistory }) {
 }
 
 /**
+ * POST /career/upload
+ * Uploads a document (PDF/TXT) to LangGraph/Pinecone for deep RAG analysis.
+ */
+export async function uploadFile(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const url = `${API_BASE}/career/upload`;
+  const res = await fetch(url, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(error.detail || `Upload failed (${res.status})`);
+  }
+
+  return res.json();
+}
+
+/**
  * Download a base64-encoded PDF.
  */
 export function downloadPDF(base64Data, filename) {

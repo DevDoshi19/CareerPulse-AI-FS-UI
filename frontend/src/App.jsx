@@ -38,16 +38,25 @@ function AnimatedRoutes() {
   );
 }
 
+function Layout() {
+  const location = useLocation();
+  const isChat = location.pathname.startsWith('/chat');
+  
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-1 flex flex-col">
+        <AnimatedRoutes />
+      </main>
+      {!isChat && <Footer />}
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-1 flex flex-col">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-      </div>
+      <Layout />
     </Router>
   );
 }

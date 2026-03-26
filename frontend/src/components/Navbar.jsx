@@ -56,7 +56,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-md bg-teal-900 dark:bg-teal-500 flex items-center justify-center transition-colors">
-            <span className="text-white dark:text-slate-950 text-sm font-bold">C</span>
+            <span className="text-white dark:text-white text-sm font-bold">C</span>
           </div>
           <span className="text-[17px] font-bold text-teal-900 dark:text-white tracking-[-0.02em] transition-colors">
             CareerForge
@@ -105,7 +105,7 @@ export default function Navbar() {
           {/* CTA */}
           <Link
             to="/resume"
-            className="bg-teal-900 dark:bg-teal-500 text-white dark:text-slate-950 text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-800 dark:hover:bg-teal-400 transition-all duration-200 hover:scale-[1.02]"
+            className="bg-teal-900 dark:bg-teal-500 text-white dark:text-white text-[13px] font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-800 dark:hover:bg-teal-400 transition-all duration-200 hover:scale-[1.02]"
           >
             Get Started
           </Link>

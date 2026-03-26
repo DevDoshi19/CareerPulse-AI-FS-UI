@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
 import { fadeUp } from '../components/UIComponents';
-import SoftAurora from '../components/SoftAurora';
 
 export default function Blog() {
   return (
     <div className="flex-1 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 hidden dark:block opacity-60">
-        <SoftAurora color1="#061b27" color2="#000000" speed={0.4} />
-      </div>
 
       <div className="max-w-[1200px] mx-auto px-8 pt-24 pb-20 relative z-10">
         <motion.div initial="hidden" animate="visible" className="max-w-3xl">

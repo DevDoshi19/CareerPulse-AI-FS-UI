@@ -32,7 +32,7 @@ export default function ATSScanner() {
   };
 
   const inputCls = "w-full p-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-teal-900 transition-shadow";
-  const labelCls = "block text-sm font-semibold text-slate-700 dark:text-[#94A3B8] mb-1.5 uppercase tracking-wider";
+  const labelCls = "block text-sm font-semibold text-slate-700 dark:text-slate-400 mb-1.5 uppercase tracking-wider";
 
   return (
     <div className="flex-1">
@@ -59,8 +59,8 @@ export default function ATSScanner() {
                   <button key={m} type="button" onClick={() => setInputMethod(m)}
                     className={`flex-1 py-3 text-[14px] font-bold rounded-lg transition-colors btn-hover ${
                       inputMethod === m
-                        ? 'bg-teal-900 dark:bg-[#22C55E] text-white dark:text-[#020617]'
-                        : 'bg-slate-100 dark:bg-[#020617] text-slate-500 dark:text-[#CBD5E1] hover:bg-slate-200'
+                        ? 'bg-teal-900 dark:bg-teal-500 text-white dark:text-white'
+                        : 'bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-300 hover:bg-slate-200'
                     }`} id={`btn-${m}-mode`}>
                     {m === 'text' ? 'Paste Text' : 'Upload PDF'}
                   </button>
@@ -70,12 +70,12 @@ export default function ATSScanner() {
               {inputMethod === 'text' ? (
                 <textarea className={`${inputCls} min-h-[140px]`} rows={6} placeholder="Paste resume text..." value={resumeText} onChange={(e) => setResumeText(e.target.value)} id="ats-resume-text" />
               ) : (
-                <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-slate-300 dark:border-[#334155] rounded-xl cursor-pointer bg-slate-50 dark:bg-[#020617] hover:bg-slate-100 dark:hover:bg-[#111827] transition-colors">
+                <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-slate-300 dark:border-slate-800 rounded-xl cursor-pointer bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-[#111827] transition-colors">
                   <input type="file" accept=".pdf" onChange={(e) => setFile(e.target.files[0])} className="hidden" />
                   <svg className="w-8 h-8 text-slate-300 dark:text-[#334155] mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 16V4m0 0L8 8m4-4l4 4M4 14v4a2 2 0 002 2h12a2 2 0 002-2v-4" />
                   </svg>
-                  <span className="text-[13px] text-slate-400 dark:text-[#94A3B8]">{file ? file.name : 'Click to upload PDF'}</span>
+                  <span className="text-[13px] text-slate-400 dark:text-slate-400">{file ? file.name : 'Click to upload PDF'}</span>
                 </label>
               )}
 
@@ -85,7 +85,7 @@ export default function ATSScanner() {
                 )}
               </AnimatePresence>
 
-              <button onClick={handleAnalyze} disabled={loading} className="w-full mt-6 bg-teal-900 dark:bg-[#22C55E] hover:bg-teal-800 dark:hover:bg-green-400 text-white dark:text-[#020617] font-semibold text-[13px] py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm cursor-pointer btn-hover" id="btn-analyze">
+              <button onClick={handleAnalyze} disabled={loading} className="w-full mt-6 bg-teal-900 dark:bg-teal-500 hover:bg-teal-800 dark:hover:bg-teal-400 text-white dark:text-white font-semibold text-[13px] py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm cursor-pointer btn-hover" id="btn-analyze">
                 {loading ? 'Analyzing...' : 'Analyze Resume'}
               </button>
             </Card>
@@ -143,7 +143,7 @@ export default function ATSScanner() {
                     <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] mb-2.5">Recommendations</h4>
                     <div className="space-y-2">
                       {result.improvement_tips.map((tip, i) => (
-                        <div key={i} className="text-[13px] text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-neutral-900/50 px-4 py-3 rounded-xl border border-slate-100 dark:border-neutral-800 leading-relaxed">{tip}</div>
+                        <div key={i} className="text-[13px] text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 leading-relaxed">{tip}</div>
                       ))}
                     </div>
                   </Card>
@@ -156,18 +156,18 @@ export default function ATSScanner() {
                 <div className="text-center py-16 flex flex-col items-center">
                   {/* Animated radar SVG */}
                   <div className="relative w-16 h-16 mb-4">
-                    <svg className="w-16 h-16 text-teal-900/20 dark:text-[#22C55E]/20" viewBox="0 0 64 64" fill="none">
+                    <svg className="w-16 h-16 text-teal-900/20 dark:text-teal-400/20" viewBox="0 0 64 64" fill="none">
                       <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="2" />
                       <circle cx="32" cy="32" r="18" stroke="currentColor" strokeWidth="1.5" />
                       <circle cx="32" cy="32" r="8" stroke="currentColor" strokeWidth="1" />
                       <circle cx="32" cy="32" r="3" fill="currentColor" className="animate-pulse" />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full border-2 border-teal-500/30 dark:border-[#22C55E]/30 animate-ping" />
+                      <div className="w-12 h-12 rounded-full border-2 border-teal-500/30 dark:border-teal-500/30 animate-ping" />
                     </div>
                   </div>
                   <h3 className="text-[14px] font-bold text-gray-900 dark:text-white mt-1">Analysis Report</h3>
-                  <p className="text-[12px] text-gray-500 dark:text-[#94A3B8] mt-1.5 max-w-[220px] mx-auto">Paste a JD and resume to see results.</p>
+                  <p className="text-[12px] text-gray-500 dark:text-slate-400 mt-1.5 max-w-[220px] mx-auto">Paste a JD and resume to see results.</p>
                 </div>
               </Card>
             )}
@@ -180,9 +180,9 @@ export default function ATSScanner() {
 
 function MetricCard({ label, value }) {
   return (
-    <div className="bg-gray-50 dark:bg-[#111827] rounded-xl p-4 text-center border border-gray-100 dark:border-[#334155] card-hover">
+    <div className="bg-gray-50 dark:bg-slate-900 rounded-xl p-4 text-center border border-gray-100 dark:border-slate-800 card-hover">
       <p className="text-[14px] font-bold text-gray-900 dark:text-white truncate">{value}</p>
-      <p className="text-[10px] font-semibold text-gray-500 dark:text-[#94A3B8] uppercase tracking-[0.08em] mt-1">{label}</p>
+      <p className="text-[10px] font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-[0.08em] mt-1">{label}</p>
     </div>
   );
 }

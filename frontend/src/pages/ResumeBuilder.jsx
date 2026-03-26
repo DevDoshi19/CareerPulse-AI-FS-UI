@@ -44,7 +44,7 @@ export default function ResumeBuilder() {
   };
 
   const inputCls = "w-full min-w-0 p-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-900 transition-shadow";
-  const btnCls = "w-full min-w-0 py-4 bg-teal-900 dark:bg-[#22C55E] text-white dark:text-[#020617] rounded-xl font-bold hover:bg-teal-800 dark:hover:bg-green-400 transition-colors btn-hover mt-4";
+  const btnCls = "w-full min-w-0 py-4 bg-teal-900 dark:bg-teal-500 text-white dark:text-white rounded-xl font-bold hover:bg-teal-800 dark:hover:bg-teal-400 transition-colors btn-hover mt-4";
   const textareaCls = `${inputCls} resize-none min-h-[80px]`;
   const labelCls = 'block text-[11px] font-semibold text-slate-500 uppercase tracking-[0.06em] mb-1.5';
 
@@ -78,7 +78,7 @@ export default function ResumeBuilder() {
                   </div>
                   <div className="w-16">
                     <label className={labelCls}>Color</label>
-                    <input type="color" value={form.theme_color} onChange={update('theme_color')} className="w-full h-[44px] rounded-xl border border-slate-200 dark:border-neutral-800 p-1 cursor-pointer bg-transparent" id="color-picker" />
+                    <input type="color" value={form.theme_color} onChange={update('theme_color')} className="w-full h-[44px] rounded-xl border border-slate-200 dark:border-slate-800 p-1 cursor-pointer bg-transparent" id="color-picker" />
                   </div>
                 </div>
 

@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
 import { fadeUp } from '../components/UIComponents';
-import SoftAurora from '../components/SoftAurora';
 
 export default function Guides() {
   return (
     <div className="flex-1 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 hidden dark:block opacity-60">
-        <SoftAurora color1="#061b27" color2="#000000" speed={0.4} />
-      </div>
 
       <div className="max-w-[1200px] mx-auto px-8 pt-24 pb-20 relative z-10">
         <motion.div initial="hidden" animate="visible" className="max-w-3xl">
@@ -30,8 +26,8 @@ export default function Guides() {
           className="mt-16 space-y-4"
         >
           {['Getting Started with Resume Builder', 'Understanding your ATS Score', 'Prompt Engineering for Career Coach'].map((title, i) => (
-            <div key={i} className="flex items-center gap-6 bg-white dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-xl p-6 transition-all hover:border-teal-900 dark:hover:border-teal-500 cursor-pointer">
-              <div className="w-16 h-16 rounded-lg bg-teal-50 dark:bg-neutral-900 flex items-center justify-center text-teal-900 dark:text-white font-bold text-xl">
+            <div key={i} className="flex items-center gap-6 bg-white dark:bg-black border border-slate-200 dark:border-slate-800 rounded-xl p-6 transition-all hover:border-teal-900 dark:hover:border-teal-500 cursor-pointer">
+              <div className="w-16 h-16 rounded-lg bg-teal-50 dark:bg-slate-900 flex items-center justify-center text-teal-900 dark:text-white font-bold text-xl">
                 {i + 1}
               </div>
               <div>

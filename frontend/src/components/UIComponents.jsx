@@ -87,7 +87,7 @@ export function Card({ children, className = '', dark = false, ...props }) {
         transition-all duration-300
         ${
           dark
-            ? 'bg-teal-900 border-teal-800 text-white shadow-lg'
+            ? 'bg-slate-900 border-slate-800 text-white shadow-lg'
             : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-sm'
         }
         ${className}

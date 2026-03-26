@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { fadeUp } from '../components/UIComponents';
-import SoftAurora from '../components/SoftAurora';
 
 export default function Changelog() {
   const versions = [
@@ -11,9 +10,6 @@ export default function Changelog() {
 
   return (
     <div className="flex-1 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 hidden dark:block opacity-60">
-        <SoftAurora color1="#061b27" color2="#000000" speed={0.4} />
-      </div>
 
       <div className="max-w-[800px] mx-auto px-8 pt-24 pb-32 relative z-10">
         <motion.div initial="hidden" animate="visible">
@@ -32,27 +28,36 @@ export default function Changelog() {
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 space-y-12 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800"
+          className="mt-16 w-full relative h-full"
         >
-          {versions.map((ver, i) => (
-            <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-              {/* Icon */}
-              <div className="flex items-center justify-center w-8 h-8 rounded-full border border-white dark:border-slate-950 bg-teal-900 dark:bg-teal-500 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10 transition-colors">
-                <div className="w-2 h-2 rounded-full bg-white dark:bg-slate-950" />
-              </div>
-              
-              {/* Card */}
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-xl p-6 transition-colors shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-bold text-teal-900 dark:text-white text-[15px]">{ver.version}</span>
-                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest">{ver.date}</span>
+          {/* Strict Centered Vertical Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-800 z-0"></div>
+
+          <div className="space-y-16 lg:space-y-24">
+            {versions.map((ver, i) => {
+              const isEven = i % 2 === 0;
+              return (
+              <div key={i} className="relative w-full flex items-center min-w-0">
+                
+                {/* Absolute Centered Dot (Rule 1 Fix) */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-slate-950 bg-teal-900 dark:bg-teal-500 z-10 flex items-center justify-center shadow-sm"></div>
+                
+                {/* Card Layout: Alternating spacing preventing overflow (Rule 2 Fix) */}
+                <div className={`w-[calc(50%-24px)] md:w-[calc(50%-48px)] min-w-0 ${isEven ? 'mr-auto' : 'ml-auto'}`}>
+                  <div className="w-full bg-white dark:bg-black border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm min-w-0 overflow-hidden">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                      <span className="font-bold text-teal-900 dark:text-white text-[15px] truncate">{ver.version}</span>
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest whitespace-nowrap">{ver.date}</span>
+                    </div>
+                    <ul className="list-disc pl-5 space-y-2 text-[13px] text-slate-600 dark:text-slate-400">
+                      {ver.features.map((f, j) => <li key={j} className="break-words">{f}</li>)}
+                    </ul>
+                  </div>
                 </div>
-                <ul className="list-disc pl-4 space-y-2 text-[13px] text-slate-600 dark:text-slate-400">
-                  {ver.features.map((f, j) => <li key={j}>{f}</li>)}
-                </ul>
+
               </div>
-            </div>
-          ))}
+            )})}
+          </div>
         </motion.div>
       </div>
     </div>

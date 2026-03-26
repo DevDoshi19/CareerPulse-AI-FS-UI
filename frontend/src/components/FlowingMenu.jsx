@@ -123,7 +123,7 @@ function MenuItem({ link, text, image, speed, marqueeBgColor, marqueeTextColor }
   };
 
   return (
-    <div className="menu__item border-b border-slate-200 dark:border-neutral-800" ref={itemRef}>
+    <div className="menu__item border-b border-slate-200 dark:border-slate-800" ref={itemRef}>
       <a
         className="menu__item-link text-slate-900 dark:text-white"
         href={link}
